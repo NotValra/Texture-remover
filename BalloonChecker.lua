@@ -92,3 +92,6 @@ while true do
     -- Update the count
     updateCount()
 end
+wait()
+until gameLoaded()
+loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
