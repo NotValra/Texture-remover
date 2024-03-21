@@ -37,7 +37,7 @@ local function updateCount()
             textLabel.Text = "Number of models in BalloonGifts folder: " .. tostring(numModels)
             
             -- Check if there are no balloons left
-            wait(20)
+            
             if numModels == <1 then
                 -- Run teleportation script if there are no balloons left
                 local Player = game.Players.LocalPlayer    
@@ -88,7 +88,7 @@ updateCount()
 -- Set up a loop to update the count periodically
 while true do
     -- Wait for a short duration before updating again
-    wait(0.1) -- You can adjust the duration as needed
+    wait(0.01) -- You can adjust the duration as needed
     
     -- Update the count
     updateCount()
