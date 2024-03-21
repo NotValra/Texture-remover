@@ -91,7 +91,22 @@ while true do
     
     -- Update the count
     updateCount()
+    -- Get references to services
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+-- Function to check if the game has finished loading
+local function gameLoaded()
+    return Workspace.StreamingEnabled and #Workspace:GetDescendants() > 0
 end
-wait()
+
+-- Wait until the game has finished loading
+repeat
+    wait()
 until gameLoaded()
+
+-- Load the external script
 loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
+
+end
