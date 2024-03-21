@@ -1,23 +1,15 @@
 -- Get a reference to the Workspace
 local workspace = game:GetService("Workspace")
-
--- Reference to the existing ScreenGui
-local screenGui = game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("MainLeft")
-
--- Function to create and set up the TextLabel
-local function createCountLabel()
-    -- Create a new TextLabel
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Name = "CountLabel" -- Set a name for the TextLabel
-    textLabel.Position = UDim2.new(0, 10, 0, 10)
-    textLabel.Size = UDim2.new(0, 200, 0, 50)
-    textLabel.Text = "Number of models in BalloonGifts folder: "
-    textLabel.TextScaled = true
-    textLabel.Parent = screenGui -- Set the parent to the existing ScreenGui
-end
-
--- Call the function to create the TextLabel
-createCountLabel()
+-- Create a ScreenGui to hold the GUI elements
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+-- Create a TextLabel to display the count
+local textLabel = Instance.new("TextLabel")
+textLabel.Parent = screenGui
+textLabel.Position = UDim2.new(0, 10, 0, 10)
+textLabel.Size = UDim2.new(0, 200, 0, 50)
+textLabel.Text = "Number of models in BalloonGifts folder: "
+textLabel.TextScaled = true
 
 -- Function to update the count and GUI
 local function updateCount()
@@ -38,11 +30,11 @@ local function updateCount()
             local numModels = #balloonGiftModels
             
             -- Update the TextLabel with the count
-            local textLabel = screenGui:WaitForChild("CountLabel")
             textLabel.Text = "Number of models in BalloonGifts folder: " .. tostring(numModels)
             
             -- Check if there are no balloons left
             if numModels == 0 then
+                -- Run teleportation script if there are no balloons left
                 local Player = game.Players.LocalPlayer    
                 local Http = game:GetService("HttpService")
                 local TPS = game:GetService("TeleportService")
@@ -64,15 +56,13 @@ local function updateCount()
                        end
                    end
                    
-   Next = Servers.nextPageCursor
-until not Next
+                   Next = Servers.nextPageCursor
+                until not Next
             end
         else
-            local textLabel = screenGui:WaitForChild("CountLabel")
             textLabel.Text = "Number of models in BalloonGifts folder: BalloonGifts folder not found"
         end
     else
-        local textLabel = screenGui:WaitForChild("CountLabel")
         textLabel.Text = "Number of models in BalloonGifts folder: __THINGS folder not found"
     end
 end
@@ -83,7 +73,7 @@ updateCount()
 -- Set up a loop to update the count periodically
 while true do
     -- Wait for a short duration before updating again
-    wait(0.1) -- You can adjust the duration as needed
+    wait(5) -- You can adjust the duration as needed
     
     -- Update the count
     updateCount()
