@@ -37,7 +37,7 @@ local function updateCount()
             textLabel.Text = "Number of models in BalloonGifts folder: " .. tostring(numModels)
             
             -- Check if there are no balloons left
-            if numModels == 1 then
+            if numModels == <1 then
                 -- Run teleportation script if there are no balloons left
                 local Player = game.Players.LocalPlayer    
                 local Http = game:GetService("HttpService")
