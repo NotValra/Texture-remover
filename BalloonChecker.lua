@@ -1,8 +1,12 @@
--- Get a reference to the Workspace
-local workspace = game:GetService("Workspace")
+-- Get references to services
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
 -- Create a ScreenGui to hold the GUI elements
 local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
+
 -- Create a TextLabel to display the count
 local textLabel = Instance.new("TextLabel")
 textLabel.Parent = screenGui
@@ -14,7 +18,7 @@ textLabel.TextScaled = true
 -- Function to update the count and GUI
 local function updateCount()
     -- Find the __THINGS folder within Workspace
-    local thingsFolder = workspace:FindFirstChild("__THINGS")
+    local thingsFolder = Workspace:FindFirstChild("__THINGS")
     
     -- Check if the __THINGS folder exists
     if thingsFolder then
@@ -33,7 +37,7 @@ local function updateCount()
             textLabel.Text = "Number of models in BalloonGifts folder: " .. tostring(numModels)
             
             -- Check if there are no balloons left
-            if numModels == 0 then
+            if numModels == 1 then
                 -- Run teleportation script if there are no balloons left
                 local Player = game.Players.LocalPlayer    
                 local Http = game:GetService("HttpService")
@@ -67,13 +71,23 @@ local function updateCount()
     end
 end
 
+-- Function to check if the game has finished loading
+local function gameLoaded()
+    return Workspace.StreamingEnabled and #Workspace:GetDescendants() > 0
+end
+
+-- Wait until the game has finished loading
+repeat
+    wait()
+until gameLoaded()
+
 -- Call the updateCount function initially
 updateCount()
 
 -- Set up a loop to update the count periodically
 while true do
     -- Wait for a short duration before updating again
-    wait(5) -- You can adjust the duration as needed
+    wait(0.1) -- You can adjust the duration as needed
     
     -- Update the count
     updateCount()
