@@ -38,7 +38,7 @@ local function updateCount()
             
             -- Check if there are no balloons left
             
-            if numModels == <1 then
+            if numModels == 0 then
                 -- Run teleportation script if there are no balloons left
                 local Player = game.Players.LocalPlayer    
                 local Http = game:GetService("HttpService")
