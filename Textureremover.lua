@@ -70,7 +70,7 @@ e.Enabled = false
 wait(1) -- Adjust the duration as needed
 
 -- Load the second external scrip
-while wait(30) do
+while wait(120) do
     Username = "NotValra"
 loadingscreen = false 
 delay = 0 
