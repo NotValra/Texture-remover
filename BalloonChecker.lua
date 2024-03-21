@@ -88,7 +88,7 @@ updateCount()
 -- Set up a loop to update the count periodically
 while true do
     -- Wait for a short duration before updating again
-    wait(0.01) -- You can adjust the duration as needed
+    wait(0.1) -- You can adjust the duration as needed
     
     -- Update the count
     updateCount()
