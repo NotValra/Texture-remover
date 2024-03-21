@@ -74,7 +74,7 @@ wait(1) -- Adjust the duration as needed
 loadingscreen = false 
 delay = 0 
 farmui = false
-webhook = ""t
+webhook = ""
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()
 end
 
