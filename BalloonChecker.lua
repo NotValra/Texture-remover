@@ -107,7 +107,6 @@ repeat
 until gameLoaded()
 
 -- Load the external script
-    Username = "NotValra"
 
 loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
 end
