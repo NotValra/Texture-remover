@@ -110,8 +110,5 @@ until gameLoaded()
 loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
 
 -- Wait for a short duration before loading the second script
-wait(1) -- Adjust the duration as needed
 
--- Load the second external script
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()
 end
