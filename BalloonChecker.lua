@@ -109,5 +109,4 @@ until gameLoaded()
 
 -- Load the external script
 
-loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
 end
