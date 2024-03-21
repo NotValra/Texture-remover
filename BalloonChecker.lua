@@ -3,6 +3,7 @@ local workspace = game:GetService("Workspace")
 -- Create a ScreenGui to hold the GUI elements
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.DisplayOrder = 999 -- Set a high DisplayOrder value to ensure it's on top
 -- Create a TextLabel to display the count
 local textLabel = Instance.new("TextLabel")
 textLabel.Parent = screenGui
