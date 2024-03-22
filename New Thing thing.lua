@@ -157,7 +157,7 @@ function getBalloonUID(zoneName)
 	end
 end
 function getServer()
-	local servers = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100')).data
+	local servers = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Desc&limit=100')).data
 	local server = servers[Random.new():NextInteger(1, 100)]
 	if server then return server else return getServer() end
 end
@@ -233,7 +233,7 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
 				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
 				local breakableId = getBalloonUID(getCurrentZone())
-				if breakableId == "Skip" then print("Dw cool cool lovely pool") end
+				if breakableId == "Skip" then break end
 				if breakableId then
 					HRP.CFrame = CFrame.new(Balloon.LandPosition)
 					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
