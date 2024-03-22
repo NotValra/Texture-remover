@@ -22,6 +22,8 @@ l.FogEnd = 9e9
 
 l.Brightness = 0
 
+setfpscap(3)
+
 settings().Rendering.QualityLevel = "Level01"
 
 for i, v in pairs(g:GetDescendants()) do
