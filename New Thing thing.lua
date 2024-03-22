@@ -209,29 +209,11 @@ autoLootBagConnection = workspace.__THINGS.Lootbags.ChildAdded:Connect(function(
 end)
 local startBalloons = #workspace.__THINGS.BalloonGifts:GetChildren()
 if #workspace.__THINGS.BalloonGifts:GetChildren() <= 1 then
-	local Player = game.Players.LocalPlayer    
-                local Http = game:GetService("HttpService")
-                local TPS = game:GetService("TeleportService")
-                local Api = "https://games.roblox.com/v1/games/"
-                
-                local _place,_id = game.PlaceId, game.JobId
-                local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
-                function ListServers(cursor)
-                   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-                   return Http:JSONDecode(Raw)
-                end
-                
-                local Next; repeat
-                   local Servers = ListServers(Next)
-                   for i,v in next, Servers.data do
-                       if v.playing < v.maxPlayers and v.id ~= _id then
-                           local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
-                           if s then break end
-                       end
-                   end
-                   
-                   Next = Servers.nextPageCursor
-                until not Next
+	repeat
+		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, getServer().id, Player)
+		wait(3)
+	until not (game:GetService("Players"):GetPlayerByUserId(Player.UserId) and game:GetService("Players"):GetPlayerByUserId(Player.UserId).PlaceId == game.PlaceId)
+	
 end
 local startGifts = 0
 local startLarge = 0
@@ -279,29 +261,11 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 			if getgenv().MoneyPrinter.sendWeb then
 				sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring(getTotalRAP((endGifts - startGifts) * SmallRAP)).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring(getTotalRAP((endLarge - startLarge) * LargeRAP)).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(getTotalRAP(endGifts * SmallRAP)).." \n‐ "..tostring(endLarge).." Large :: "..tostring(getTotalRAP(endLarge * LargeRAP)).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
 			end
-			local Player = game.Players.LocalPlayer    
-                local Http = game:GetService("HttpService")
-                local TPS = game:GetService("TeleportService")
-                local Api = "https://games.roblox.com/v1/games/"
-                
-                local _place,_id = game.PlaceId, game.JobId
-                local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
-                function ListServers(cursor)
-                   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-                   return Http:JSONDecode(Raw)
-                end
-                
-                local Next; repeat
-                   local Servers = ListServers(Next)
-                   for i,v in next, Servers.data do
-                       if v.playing < v.maxPlayers and v.id ~= _id then
-                           local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
-                           if s then break end
-                       end
-                   end
-                   
-                   Next = Servers.nextPageCursor
-                until not Next
+			repeat
+				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, getServer().id, Player)
+				wait(3)
+			until not (game:GetService("Players"):GetPlayerByUserId(Player.UserId) and game:GetService("Players"):GetPlayerByUserId(Player.UserId).PlaceId == game.PlaceId)
+			
 		end
 	end
 end
