@@ -233,7 +233,7 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
 				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
 				local breakableId = getBalloonUID(getCurrentZone())
-				if breakableId == "Skip" then break end
+				if breakableId == "Skip" then print("Dw cool cool lovely pool") end
 				if breakableId then
 					HRP.CFrame = CFrame.new(Balloon.LandPosition)
 					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
