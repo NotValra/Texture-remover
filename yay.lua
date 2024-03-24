@@ -119,5 +119,4 @@ if game:IsLoaded() and getgenv().MoneyPrinter.maybeCPUReducer then
 			v.Enabled = false
 		end
 	end
-	setfpscap(8)
 end	
